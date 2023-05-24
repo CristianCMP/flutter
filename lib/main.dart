@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          leading: Container(),
           title: Text('Tarefas'),
         ),
         body: ListView(
@@ -87,13 +88,27 @@ class _TaskState extends State<Task> {
                               overflow: TextOverflow.ellipsis,
                             ),
                           )),
-                      ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              nivel++;
-                            });
-                          },
-                          child: Icon(Icons.arrow_drop_up))
+                      Container(
+                        height: 58,
+                        width: 58,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                nivel++;
+                              });
+                            },
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Icon(Icons.arrow_drop_up),
+                                Text(
+                                  'UP',
+                                  style: TextStyle(fontSize: 12),
+                                )
+                              ],
+                            )),
+                      )
                     ],
                   ),
                 ),
@@ -106,7 +121,7 @@ class _TaskState extends State<Task> {
                         width: 200,
                         child: LinearProgressIndicator(
                           color: Colors.white,
-                          value: nivel/10,
+                          value: nivel / 10,
                         ),
                       ),
                     ),
